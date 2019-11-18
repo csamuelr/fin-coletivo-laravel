@@ -15,11 +15,11 @@ class CreateApoiarProjeto extends Migration
     {
         Schema::create('apoiar_projeto', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('valor')->nullable(true)->change();
+            $table->float('valor');
             $table->integer('idUsuario')->unsigned();
             $table->foreign('idUsuario')->references('id')->on('projeto');
             $table->integer('idApoiador')->unsigned();
-            $table->foreign('idApoiador')->references('id')->on('usuario');
+            $table->foreign('idApoiador')->references('id')->on('users');
         });
     }
 

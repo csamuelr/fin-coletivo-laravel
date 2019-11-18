@@ -15,14 +15,14 @@ class CreateProjeto extends Migration
     {
         Schema::create('projeto', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('titulo')->nullable(true)->change();
-            $table->string('descricao')->nullable(true)->change();
-            $table->float('custo')->nullable(true)->change();
+            $table->string('titulo');
+            $table->string('descricao');
+            $table->float('custo');
             $table->float('tempoDev');
-            $table->timestamp('dataInicio')->nullable(true)->change();
-            $table->dateTime('dataFim')->nullable(true)->change();
+            $table->timestamp('dataInicio');
+            $table->dateTime('dataFim');
             $table->integer('idUsuario')->unsigned();
-            $table->foreign('idUsuario')->references('id')->on('usuario');
+            $table->foreign('idUsuario')->references('id')->on('users');
         });
     }
 
