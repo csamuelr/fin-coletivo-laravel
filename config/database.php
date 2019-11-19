@@ -65,7 +65,7 @@ return [
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => $host,
-            'port' => '5432',
+            //'port' => '5432',
             'database' => $database,
             'username' => $username,
             'password' => $password,
