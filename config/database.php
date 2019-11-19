@@ -1,11 +1,11 @@
 <?php
-$url = parse_url(getenv("postgres://iejkreduxrojdt:d6628e2dfdcb6f628f511492adfa518f9bb52d09ff23afe340c6cf716e5e2a26@ec2-54-243-49-82.compute-1.amazonaws.com:5432/de1ifdvvukgcsb"));
+$url = parse_url("postgres://iejkreduxrojdt:d6628e2dfdcb6f628f511492adfa518f9bb52d09ff23afe340c6cf716e5e2a26@ec2-54-243-49-82.compute-1.amazonaws.com:5432/de1ifdvvukgcsb");
 
-$host = $url["ec2-54-243-49-82.compute-1.amazonaws.com"];
+/*$host = $url["ec2-54-243-49-82.compute-1.amazonaws.com"];
 $username = $url["iejkreduxrojdt"];
 $password = $url["d6628e2dfdcb6f628f511492adfa518f9bb52d09ff23afe340c6cf716e5e2a26"];
 $database = substr($url["de1ifdvvukgcsb"], 1);
-
+*/
 
 return [
 
@@ -21,7 +21,7 @@ return [
     |
     */
 
-    'default' =>  'pgsql',
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -64,11 +64,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => $host,
-            //'port' => '5432',
-            'database' => $database,
-            'username' => $username,
-            'password' => $password,
+            'host' => $url["host"],
+            'port' => $url["port"],
+            'database' => ltrim($url["path"], "/"),
+            'username' => $url["user"],
+            'password' => $url["pass"],
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
