@@ -21,7 +21,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql'),
+    'default' =>  'pgsql',
 
     /*
     |--------------------------------------------------------------------------
@@ -64,11 +64,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', 'ec2-54-243-49-82.compute-1.amazonaws.com'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'de1ifdvvukgcsb'),
-            'username' => env('DB_USERNAME', 'iejkreduxrojdt'),
-            'password' => env('DB_PASSWORD', 'd6628e2dfdcb6f628f511492adfa518f9bb52d09ff23afe340c6cf716e5e2a26'),
+            'host' => $host,
+            'port' => '5432',
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
