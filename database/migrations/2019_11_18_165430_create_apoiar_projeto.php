@@ -15,7 +15,7 @@ class CreateApoiarProjeto extends Migration
     {
         Schema::create('apoiar_projetos', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('valor');
+            $table->double('valor', 10, 2);
             $table->integer('idUsuario')->unsigned();
             $table->foreign('idUsuario')->references('id')->on('projetos');
             //$table->foreign('idUsuario')->references('id')->on('projetos')->onDelete('cascate');

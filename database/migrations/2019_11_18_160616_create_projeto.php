@@ -17,7 +17,7 @@ class CreateProjeto extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->string('descricao');
-            $table->float('custo');
+            $table->double('custo', 10, 2);
             $table->float('tempoDev');
             $table->string('imagem1');
             $table->string('imagem2');
