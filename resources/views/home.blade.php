@@ -14,7 +14,7 @@
                     </div>
                     @endif
                     <li><a href="{{ route('projetos') }}">Ver Projetos</a></li>
-                    <li><a href="{{ route('projetos') }}">Cadastrar</a></li>
+                    <li><a href="{{ route('cadastrar') }}">Cadastrar</a></li>
                     You are logged in!
                 </div>
             </div>

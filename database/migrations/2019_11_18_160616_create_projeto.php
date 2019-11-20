@@ -18,14 +18,14 @@ class CreateProjeto extends Migration
             $table->string('titulo');
             $table->string('descricao');
             $table->double('custo', 10, 2);
-            $table->float('tempoDev');
-            $table->string('imagem1');
-            $table->string('imagem2');
-            $table->timestamp('dataInicio');
-            $table->dateTime('dataFim');
+            $table->string('imagem1')->nullable();
+            $table->string('imagem2')->nullable();
+            $table->date('tempDev');
+            $table->timestamps();
+            $table->boolean('status')->default(true)->change();
             $table->integer('idUsuario')->unsigned();
-            $table->foreign('idUsuario')->references('id')->on('users');
-            //$table->foreign('idUsuario')->references('id')->on('projetos')->onDelete('cascate');
+            //$table->foreign('idUsuario')->references('id')->on('users');
+            $table->foreign('idUsuario')->references('id')->on('projetos')->onDelete('cascade');
         });
     }
 

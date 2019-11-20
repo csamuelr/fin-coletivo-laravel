@@ -8,5 +8,5 @@ class ProjetoModel extends Model
 {
     protected $fillable = ['titulo', 'descricao', 'custo', 'dataFim', 'tempoDev', 'idUsuario'];
     protected $guarded = ['id', 'dataInicio'];
-    protected $table = 'projeto';
+    protected $table = 'projetos';
 }

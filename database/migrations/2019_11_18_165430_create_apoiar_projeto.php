@@ -16,13 +16,11 @@ class CreateApoiarProjeto extends Migration
         Schema::create('apoiar_projetos', function (Blueprint $table) {
             $table->increments('id');
             $table->double('valor', 10, 2);
-            $table->integer('idUsuario')->unsigned();
-            $table->foreign('idUsuario')->references('id')->on('projetos');
-            //$table->foreign('idUsuario')->references('id')->on('projetos')->onDelete('cascate');
-            $table->integer('idApoiador')->unsigned();
-            $table->timestamp('dataApoio');
-            $table->foreign('idApoiador')->references('id')->on('users');
-            //$table->foreign('idApoiador')->references('id')->on('users')->onDelete('cascate');
+            $table->integer('idProjeto')->unsigned();
+            $table->foreign('idProjeto')->references('id')->on('projetos')->onDelete('cascade');
+            $table->timestamps();
+            $table->integer('idApoiador')->unsigned()->nullable();
+            $table->foreign('idApoiador')->references('id')->on('users')->onDelete('set null');
         });
     }
 

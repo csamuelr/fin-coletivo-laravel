@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ProjetoModel;
 use Illuminate\Http\Request;
+use Session;
 
 class ProjetoController extends Controller
 {
@@ -39,12 +40,13 @@ class ProjetoController extends Controller
         $data = [
             'id' => request('id'),
             'titulo' => request('titulo'),
-            'custo' => request('custo')
+            'custo' => request('custo'),
+            'idUsuario' => request('id')
 
 
         ];
         ProjetoModel::create($data);
-        return redirect('projeto');
+        return redirect('home');
     }
 
     /**
