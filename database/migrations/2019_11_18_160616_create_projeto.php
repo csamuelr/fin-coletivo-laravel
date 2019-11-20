@@ -19,6 +19,8 @@ class CreateProjeto extends Migration
             $table->string('descricao');
             $table->float('custo');
             $table->float('tempoDev');
+            $table->string('imagem1');
+            $table->string('imagem2');
             $table->timestamp('dataInicio');
             $table->dateTime('dataFim');
             $table->integer('idUsuario')->unsigned();
