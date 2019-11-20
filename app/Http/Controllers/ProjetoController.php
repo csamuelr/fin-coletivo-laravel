@@ -14,7 +14,8 @@ class ProjetoController extends Controller
      */
     public function index()
     {
-        //
+        $projetos = ProjetoModel::all();
+        return view('projetos', compact('id', 'titulo', 'custo', 'tempoDev'));
     }
 
     /**
@@ -35,7 +36,15 @@ class ProjetoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'id' => request('id'),
+            'titulo' => request('titulo'),
+            'custo' => request('custo')
+
+
+        ];
+        ProjetoModel::create($data);
+        return redirect('projeto');
     }
 
     /**
@@ -46,7 +55,7 @@ class ProjetoController extends Controller
      */
     public function show(ProjetoModel $projetoModel)
     {
-        //
+        return view('projeto', compact('projetoModel'));
     }
 
     /**
@@ -57,7 +66,8 @@ class ProjetoController extends Controller
      */
     public function edit(ProjetoModel $projetoModel)
     {
-        //
+        $projeto = ProjetoModel::all();
+        return view('projeto');
     }
 
     /**
@@ -69,7 +79,11 @@ class ProjetoController extends Controller
      */
     public function update(Request $request, ProjetoModel $projetoModel)
     {
-        //
+        $projetoModel->id = $request->id;
+        $projetoModel->titulo = $request->titulo;
+        $projetoModel->custo = $request->custo;
+        $projetoModel->save();
+        return redirect('projeto');
     }
 
     /**
@@ -80,6 +94,7 @@ class ProjetoController extends Controller
      */
     public function destroy(ProjetoModel $projetoModel)
     {
-        //
+        $projetoModel->delete();
+        return redirect('projetos');
     }
 }
