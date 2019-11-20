@@ -13,13 +13,16 @@ class CreateApoiarProjeto extends Migration
      */
     public function up()
     {
-        Schema::create('apoiar_projeto', function (Blueprint $table) {
+        Schema::create('apoiar_projetos', function (Blueprint $table) {
             $table->increments('id');
             $table->float('valor');
             $table->integer('idUsuario')->unsigned();
-            $table->foreign('idUsuario')->references('id')->on('projeto');
+            $table->foreign('idUsuario')->references('id')->on('projetos');
+            //$table->foreign('idUsuario')->references('id')->on('projetos')->onDelete('cascate');
             $table->integer('idApoiador')->unsigned();
+            $table->timestamp('dataApoio');
             $table->foreign('idApoiador')->references('id')->on('users');
+            //$table->foreign('idApoiador')->references('id')->on('users')->onDelete('cascate');
         });
     }
 
@@ -30,6 +33,6 @@ class CreateApoiarProjeto extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apoiar_projeto');
+        Schema::dropIfExists('apoiar_projetos');
     }
 }

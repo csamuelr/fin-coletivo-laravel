@@ -13,7 +13,7 @@ class CreateProjeto extends Migration
      */
     public function up()
     {
-        Schema::create('projeto', function (Blueprint $table) {
+        Schema::create('projetos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titulo');
             $table->string('descricao');
@@ -25,6 +25,7 @@ class CreateProjeto extends Migration
             $table->dateTime('dataFim');
             $table->integer('idUsuario')->unsigned();
             $table->foreign('idUsuario')->references('id')->on('users');
+            //$table->foreign('idUsuario')->references('id')->on('projetos')->onDelete('cascate');
         });
     }
 
@@ -35,6 +36,6 @@ class CreateProjeto extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('projeto');
+        Schema::dropIfExists('projetos');
     }
 }
