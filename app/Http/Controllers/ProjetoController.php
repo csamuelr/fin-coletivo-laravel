@@ -16,7 +16,7 @@ class ProjetoController extends Controller
     public function index()
     {
         $projetos = ProjetoModel::all();
-        return view('projetos', compact('id', 'titulo', 'custo', 'tempoDev'));
+        return view('projetos'); //, compact('id', 'titulo', 'custo', 'tempoDev'));
     }
 
     /**
