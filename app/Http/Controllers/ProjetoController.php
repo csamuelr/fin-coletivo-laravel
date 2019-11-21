@@ -27,6 +27,14 @@ class ProjetoController extends Controller
         return view('home', compact('projetos', $projetos));
     }
 
+    public function projetos()
+    {
+        $idUser = auth()->user()->id;
+        $projetos = ProjetoModel::all();
+        //return view('projetos', compact('projetos', $projetos));
+        return view('projetos')->with('projetos', $projetos)->with('usuario', $idUser);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -49,15 +57,18 @@ class ProjetoController extends Controller
             'idUsuario' => auth()->user()->id,
             'titulo' => request('titulo'),
             'descricao' => request('descricao'),
-            'custo' => request('custo'),            
+            'custo' => request('custo'),
             'tempDev' => request('tempoDev'),
-            'imagem1' => $repo->saveImage(request('imagem1'),auth()->user()->id),
-            'imagem2' => $repo->saveImage(request('imagem2'),auth()->user()->id),
+            'imagem1' => $repo->saveImage(request('imagem1'), auth()->user()->id),
+            'imagem2' => $repo->saveImage(request('imagem2'), auth()->user()->id),
         ];
         ProjetoModel::create($data);
         return redirect('home');
     }
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display the specified resource.
      *
@@ -70,7 +81,6 @@ class ProjetoController extends Controller
     {
         $projeto = ProjetoModel::find($id);
         return view('projetos', compact('projeto', $projeto));
-
     }
 
     /**
@@ -94,12 +104,15 @@ class ProjetoController extends Controller
      */
     public function update(Request $request, ProjetoModel $projetoModel)
     {
-        $projetoModel->id = auth()->user()->id;
-        $projetoModel->titulo = $request->titulo;
-        $projetoModel->descricao = $request->descricao;
-        $projetoModel->custo = $request->custo;
-        $projetoModel->save();
-        return redirect('projeto');
+        $proj = ProjetoModel::find($request->id);
+
+        // Make sure you've got the Page model
+        if ($proj) {
+            $proj->status = false;
+            $proj->save();
+        }
+        //$projetoModel->save();
+        return redirect('projetos');
     }
 
     /**

@@ -25,7 +25,7 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    
+
     public function cadastrar()
     {
         return view('cadastrarprojeto');

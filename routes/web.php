@@ -18,10 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/cadastrar', 'HomeController@cadastrar')->name('cadastrar');
+Route::get('/projetos', 'ProjetoController@projetos')->name('projetos');
+
 
 Auth::routes();
 
-Route::get('/home', 'ProjetoController@index')->name('home');
+Route::get('/home', 'ProjetoController@index')->name('verprojetos');
 
 // Auth::routes();
 
@@ -31,6 +33,11 @@ Route::get('/home', 'ProjetoController@index')->name('home');
 Route::post('/apoiarprojeto', 'ApoiarProjetoController@store')->name('apoiarprojeto');
 Route::get('/projetos/{projeto}', 'ProjetoController@show');
 Route::get('/projetos/{projeto}/editar', 'ProjetoController@edit')->name('projetos.edit');
-Route::patch('/projetos/{projeto}', 'ProjetoController@update');
+
+
+Route::post('/projetos', 'ProjetoController@update')->name('encerrarprojeto');
+
+
+
 Route::delete('/projetos/{projeto}', 'ProjetoController@destroy')->name('projetos.destroy');
 Route::post('/cadastrarprojeto', 'ProjetoController@store')->name('cadastrarprojeto'); 

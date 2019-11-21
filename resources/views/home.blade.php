@@ -15,7 +15,8 @@
                     </div>
                     @endif
                     <li><a href="{{ route('cadastrar') }}">Cadastrar</a></li>
-                   
+                    <li><a href="{{ url('/projetos') }}">Ver meus projetos</a></li>
+
                     <div class="container-fluid">
                         <label for="pesquisa"></label>
                         <input id="pesquisa" type="text">
@@ -26,29 +27,29 @@
                                 <tr>
                                     <th>Título</th>
                                     <th>Custo</th>
-                                    <th>Status</th>                                    
+                                    <th>Status</th>
                                 </tr>
                             </thead>
-                            <tbody >
+                            <tbody>
                                 @foreach ($projetos as $projeto)
-                                   <tr>
-                                        <td>{{ $projeto->titulo }}</td>
-                                        <td>{{ $projeto->custo }}</td>
-                                        
-                                        @if ( $projeto->status )
-                                            <td>ATIVO</td> 
-                                        @else 
-                                            <td>ENCERRADO</td> 
-                                        @endif
+                                <tr>
+                                    <td>{{ $projeto->titulo }}</td>
+                                    <td>{{ $projeto->custo }}</td>
 
-                                        <td>
-                                                                                        <!-- Button to Open the Modal -->
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{$projeto->id}}">
-                                                Ver Mais
-                                            </button>
+                                    @if ( $projeto->status )
+                                    <td>ATIVO</td>
+                                    @else
+                                    <td>ENCERRADO</td>
+                                    @endif
 
-                                            <!-- The Modal -->
-                                            <div class="modal" id="myModal{{$projeto->id}}">
+                                    <td>
+                                        <!-- Button to Open the Modal -->
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{$projeto->id}}">
+                                            Ver Mais
+                                        </button>
+
+                                        <!-- The Modal -->
+                                        <div class="modal" id="myModal{{$projeto->id}}">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
 
@@ -69,6 +70,7 @@
                                                             <div class="col"> <img src="{{$projeto->imagem1}}" alt=""> </div>
                                                             <div class="col"> <img src="{{$projeto->imagem2}}" alt=""> </div>
                                                         </div>
+
                                                     </div>
 
                                                     @if ($projeto->status)
@@ -95,17 +97,17 @@
                                                 </div>
                                                 @endif
 
-                                                <!-- Modal footer -->
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                </div>
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                    </div>
 
                                                 </div>
                                             </div>
-                                            </div>
-                                        </td>
-                                   </tr>
-                                   
+                                        </div>
+                                    </td>
+                                </tr>
+
                                 @endforeach
                             </tbody>
                         </table>
