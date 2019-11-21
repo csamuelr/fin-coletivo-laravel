@@ -25,7 +25,7 @@ class CreateProjeto extends Migration
             $table->boolean('status')->default(true)->change();
             $table->integer('idUsuario')->unsigned();
             //$table->foreign('idUsuario')->references('id')->on('users');
-            $table->foreign('idUsuario')->references('id')->on('projetos')->onDelete('cascade');
+            $table->foreign('idUsuario')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ProjetoModel;
 use Illuminate\Http\Request;
 use Session;
+use App\Repositorio\ImagemRepositorio;
 use Auth;
 
 class ProjetoController extends Controller
@@ -36,16 +37,16 @@ class ProjetoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, ImagemRepositorio $repo)
     {
         $data = [
             'idUsuario' => auth()->user()->id,
             'titulo' => request('titulo'),
             'descricao' => request('descricao'),
             'custo' => request('custo'),            
-            'tempoDev' => request('tempoDev'),
-            'imagem1' => request('imagem1'),
-            'imagem2' => request('imagem2'),
+            'tempDev' => request('tempoDev'),
+            'imagem1' => $repo->saveImage(request('imagem1'),auth()->user()->id),
+            'imagem2' => $repo->saveImage(request('imagem2'),auth()->user()->id),
         ];
         ProjetoModel::create($data);
         return redirect('home');
