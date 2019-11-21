@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ApoiarProjetoModel extends Model
 {
-    protected $fillable = ['valor', 'idUsuario', 'idApoiador'];
+    protected $fillable = ['valor', 'idProjeto', 'idApoiador'];
     protected $guarded = ['id'];
-    protected $table = 'apoiar_projeto';
+    protected $table = 'apoiar_projetos';
 }

@@ -61,17 +61,39 @@
                                                 <!-- Modal body -->
                                                 <div class="modal-body">
                                                     <div class="container">
-                                                        <p>Descrição: </p><br>
-                                                        <p>{{$projeto->descricao}}</p>                                                        
+                                                        <p>Descrição: {{$projeto->descricao}} </p>                                   
+                                                        <p>Custo: {{$projeto->custo}}</p>                                                   
                                                     </div>
                                                     <div class="container-fluid">
                                                         <div class="row">
-                                                            <div class="col"> <img src="" alt=""> </div>
-                                                            <div class="col"> <img src="" alt=""> </div>
+                                                            <div class="col"> <img src="{{$projeto->imagem1}}" alt=""> </div>
+                                                            <div class="col"> <img src="{{$projeto->imagem2}}" alt=""> </div>
                                                         </div>
                                                     </div>
-                                                    
+
+                                                    @if ($projeto->status)
+                                                    <div class="container-fluid">
+                                                        <div class="form-row">
+                                                            <form action="{{ route('apoiarprojeto') }}" method="post">
+                                                                {{ csrf_field() }}
+                                                                <div class="form-col">
+                                                                    <h5>Apoiar Projeto</h5>
+                                                                </div>
+                                                                <div class="form-col form-group {{ $errors->has('valor') ? ' has-error' : '' }}">
+                                                                    <div class="col-md-6 col-md-offset-4">
+                                                                        <div><input type="hidden" id="idProjeto" name="idProjeto" value="{{$projeto->id}}"></div>
+                                                                        <label for="valor">Valor</label>                                                                   
+                                                                        <input id="valor" type="number" class="form-control" name="valor" value="" required autofocus>
+                                                                        <button type="submit" class="btn btn-primary">
+                                                                        Apoiar Projeto
+                                                                        </button>
+                                                                    </div>                        
+                                                                </div>                                                               
+                                                            </form>
+                                                        </div>
+                                                    </div>                                                   
                                                 </div>
+                                                @endif
 
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">

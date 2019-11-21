@@ -45,7 +45,7 @@ class ProjetoController extends Controller
      */
     public function store(Request $request, ImagemRepositorio $repo)
     {
-        $data = [
+        $data = [ 
             'idUsuario' => auth()->user()->id,
             'titulo' => request('titulo'),
             'descricao' => request('descricao'),

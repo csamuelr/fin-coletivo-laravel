@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\ApoiarProjetoModel;
 use Illuminate\Http\Request;
+use Auth;
+use Session;
 
 class ApoiarProjetoController extends Controller
 {
@@ -35,7 +37,14 @@ class ApoiarProjetoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'valor'      => request('valor'),
+            'idProjeto'  => request('idProjeto'),
+            'idApoiador' => auth()->user()->id,
+        ];
+
+        ApoiarProjetoModel::create($data);
+        return redirect('home');
     }
 
     /**
