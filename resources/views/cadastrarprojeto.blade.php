@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('cadastrarprojeto') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        
+
                         <div class="form-group{{ $errors->has('titulo') ? ' has-error' : '' }}">
                             <label for="titulo" class="col-md-4 control-label">Titulo</label>
 
@@ -54,7 +54,7 @@
                             <label for="imagem2" class="col-md-4 control-label">Imagem 2</label>
 
                             <div class="col-md-6">
-                                <input id="imagem2" accept='image/*' type="file" class="form-control" name="Imagem2" value="" required autofocus>
+                                <input id="imagem2" accept='image/*' type="file" class="form-control" name="imagem2" value="" required autofocus>
                             </div>
                         </div>
 

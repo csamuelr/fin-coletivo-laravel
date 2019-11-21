@@ -22,7 +22,7 @@ class CreateProjeto extends Migration
             $table->string('imagem2')->nullable();
             $table->date('tempDev');
             $table->timestamps();
-            $table->boolean('status')->default(true)->change();
+            $table->boolean('status')->default(true);
             $table->integer('idUsuario')->unsigned();
             //$table->foreign('idUsuario')->references('id')->on('users');
             $table->foreign('idUsuario')->references('id')->on('users')->onDelete('cascade');
