@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ProjetoModel;
 use Illuminate\Http\Request;
 use Session;
+use Auth;
 
 class ProjetoController extends Controller
 {
@@ -38,12 +39,13 @@ class ProjetoController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'id' => request('id'),
+            'idUsuario' => auth()->user()->id,
             'titulo' => request('titulo'),
-            'custo' => request('custo'),
-            'idUsuario' => request('id')
-
-
+            'descricao' => request('descricao'),
+            'custo' => request('custo'),            
+            'tempoDev' => request('tempoDev'),
+            'imagem1' => request('imagem1'),
+            'imagem2' => request('imagem2'),
         ];
         ProjetoModel::create($data);
         return redirect('home');
@@ -81,8 +83,9 @@ class ProjetoController extends Controller
      */
     public function update(Request $request, ProjetoModel $projetoModel)
     {
-        $projetoModel->id = $request->id;
+        $projetoModel->id = auth()->user()->id;
         $projetoModel->titulo = $request->titulo;
+        $projetoModel->descricao = $request->descricao;
         $projetoModel->custo = $request->custo;
         $projetoModel->save();
         return redirect('projeto');

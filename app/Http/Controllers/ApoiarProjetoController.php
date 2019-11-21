@@ -82,4 +82,9 @@ class ApoiarProjetoController extends Controller
     {
         //
     }
+
+    // public function apoiar_projeto(){
+    //     return view('projeto');
+    // }
+
 }
