@@ -14,8 +14,7 @@ class ImagemRepositorio
                 $extension = $image->getClientOriginalExtension();
                 $fileName = time() . random_int(100, 999) .'.' . $extension; 
                 $destinationPath = public_path('images/'.$id.'/');
-                // $url = 'http://financiamento-coletivo.herokuapp.com/images/'.$id.'/'.$fileName;
-                $url = 'http://localhost:8000/images/'.$id.'/'.$fileName;
+                $url = 'http://financiamento-coletivo.herokuapp.com/images/'.$id.'/'.$fileName;
                 $fullPath = $destinationPath.$fileName;
                 if (!file_exists($destinationPath)) {
                     File::makeDirectory($destinationPath, 0775);
@@ -28,7 +27,7 @@ class ImagemRepositorio
                 $image->save($fullPath, 100);
                 return $url;
             } else {
-                return 'http://localhost:8000/images/placeholder300x300.jpg';
+                return 'http://financiamento-coletivo.herokuapp.com/images/placeholder300x300.jpg';
             }
         }
     }
