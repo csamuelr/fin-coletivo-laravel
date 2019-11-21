@@ -18,7 +18,13 @@ class ProjetoController extends Controller
     public function index()
     {
         $projetos = ProjetoModel::all();
-        return view('projetos'); //, compact('id', 'titulo', 'custo', 'tempoDev'));
+        // $data = array(
+        //     'titulo' => $projetos->titulo,
+        //     'custo' => $projetos->custo,
+        //     'status' => $projetos->status,
+        // )
+
+        return view('home', compact('projetos', $projetos));
     }
 
     /**
@@ -43,10 +49,10 @@ class ProjetoController extends Controller
             'idUsuario' => auth()->user()->id,
             'titulo' => request('titulo'),
             'descricao' => request('descricao'),
-            'custo' => request('custo'),
+            'custo' => request('custo'),            
             'tempDev' => request('tempoDev'),
-            'imagem1' => $repo->saveImage(request('imagem1'), auth()->user()->id),
-            'imagem2' => $repo->saveImage(request('imagem2'), auth()->user()->id),
+            'imagem1' => $repo->saveImage(request('imagem1'),auth()->user()->id),
+            'imagem2' => $repo->saveImage(request('imagem2'),auth()->user()->id),
         ];
         ProjetoModel::create($data);
         return redirect('home');
@@ -58,9 +64,13 @@ class ProjetoController extends Controller
      * @param  \App\ProjetoModel  $projetoModel
      * @return \Illuminate\Http\Response
      */
-    public function show(ProjetoModel $projetoModel)
+
+    // ProjetoModel $projetoModel
+    public function show($id)
     {
-        return view('projeto', compact('projetoModel'));
+        $projeto = ProjetoModel::find($id);
+        return view('projetos', compact('projeto', $projeto));
+
     }
 
     /**
