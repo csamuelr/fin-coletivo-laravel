@@ -27,7 +27,9 @@
                                 <tr>
                                     <th>Título</th>
                                     <th>Custo</th>
+                                    <th>Arrecado</th>
                                     <th>Status</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,6 +37,15 @@
                                 <tr>
                                     <td>{{ $projeto->titulo }}</td>
                                     <td>{{ $projeto->custo }}</td>
+                                    <td>
+                                        @php($soma = 0)
+                                        @foreach($apoios as $apoio)
+                                            @if ($apoio->idProjeto == $projeto->id)
+                                                @php($soma += $apoio->valor)
+                                            @endif
+                                        @endforeach
+                                        {{$soma}}
+                                    </td>
 
                                     @if ( $projeto->status )
                                     <td>ATIVO</td>

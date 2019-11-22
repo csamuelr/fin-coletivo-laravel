@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ProjetoModel;
+use App\ApoiarProjetoModel;
 use Illuminate\Http\Request;
 use Session;
 use App\Repositorio\ImagemRepositorio;
@@ -18,13 +19,15 @@ class ProjetoController extends Controller
     public function index()
     {
         $projetos = ProjetoModel::all();
+        $apoio = ApoiarProjetoModel::all();
+
         // $data = array(
         //     'titulo' => $projetos->titulo,
         //     'custo' => $projetos->custo,
         //     'status' => $projetos->status,
         // )
 
-        return view('home', compact('projetos', $projetos));
+        return view('home')->with('projetos', $projetos)->with('apoios', $apoio);
     }
 
     public function projetos()

@@ -47,6 +47,8 @@ class ApoiarProjetoController extends Controller
         return redirect('home');
     }
 
+    
+
     /**
      * Display the specified resource.
      *
