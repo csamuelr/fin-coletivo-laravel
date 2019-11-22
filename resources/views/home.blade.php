@@ -18,10 +18,6 @@
                     <li><a href="{{ url('/projetos') }}">Ver meus projetos</a></li>
 
                     <div class="container-fluid">
-                        <label for="pesquisa"></label>
-                        <input id="pesquisa" type="text">
-                    </div>
-                    <div class="container-fluid">
                         <table class='table table-hover'>
                             <thead>
                                 <tr>
